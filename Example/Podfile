@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'LXCShow_Example' do
+  pod 'LXCShow', :path => '../'
+
+  target 'LXCShow_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
