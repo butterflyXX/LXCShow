@@ -7,7 +7,7 @@
 //
 
 #import "LXCViewController.h"
-
+#import "LXCAdvertisingFloatView.h"
 @interface LXCViewController ()
 
 @end
@@ -24,6 +24,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    LXCAdvertisingFloatView *adv = [[LXCAdvertisingFloatView alloc] initWithFrame:CGRectZero andImageUrlString:@"http://img.wdjimg.com/image/video/945fa937f0955b31224314a4eeef59b8_0_0.jpeg" andtapImageAction:^{
+        NSLog(@"图片点击");
+    }];
+    [adv show];
 }
 
 @end

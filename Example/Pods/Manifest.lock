@@ -1,0 +1,23 @@
+PODS:
+  - LXCShow (0.1.0):
+    - Masonry (~> 1.1.0)
+  - Masonry (1.1.0)
+
+DEPENDENCIES:
+  - LXCShow (from `../`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Masonry
+
+EXTERNAL SOURCES:
+  LXCShow:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LXCShow: 5254eaa25759a26875c6e818aa9bb6c3150a72a3
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+
+PODFILE CHECKSUM: 5cc935db129680f132bfb723248fca74f7a75ffa
+
+COCOAPODS: 1.5.0

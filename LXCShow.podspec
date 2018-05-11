@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LXCShow'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'A short description of LXCShow.'
 
 # This description is used to generate tags and improve search results.
@@ -25,16 +25,18 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'butterflyXX' => '1459709117@qq.com' }
-  s.source           = { :git => 'https://github.com/butterflyXX/LXCShow.git', :tag => s.version.to_s }
+  s.source           = { :git => 'git@github.com:butterflyXX/LXCShow.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'LXCShow/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'LXCShow' => ['LXCShow/Assets/*.png']
-  # }
+  s.resource_bundles = {
+      'LXCShow' => ['LXCShow/Assets/LXCShow.bundle/*.png']
+  }
+
+  s.dependency 'Masonry', '~> 1.1.0'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

@@ -1,0 +1,32 @@
+{
+  "name": "LXCShow",
+  "version": "0.1.0",
+  "summary": "A short description of LXCShow.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/butterflyXX/LXCShow",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "butterflyXX": "1459709117@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/butterflyXX/LXCShow.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "LXCShow/Classes/**/*",
+  "resource_bundles": {
+    "LXCShow": [
+      "LXCShow/Assets/LXCShow.bundle/*.png"
+    ]
+  },
+  "dependencies": {
+    "Masonry": [
+      "~> 1.1.0"
+    ]
+  }
+}

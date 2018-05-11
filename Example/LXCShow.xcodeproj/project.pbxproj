@@ -38,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		2B0E063A5E4DE8CD3FF9A6B5 /* Pods-LXCShow_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LXCShow_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LXCShow_Tests/Pods-LXCShow_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		2C30A42965D4400157669CEC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		2C30A42965D4400157669CEC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* LXCShow_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LXCShow_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,11 +61,11 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94B9EAE004D4F900444C8BCC /* Pods-LXCShow_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LXCShow_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LXCShow_Tests/Pods-LXCShow_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		B7AF56DCA5AED79200AC6E2F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		B7AF56DCA5AED79200AC6E2F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		BFD3DA4D2590C7F97A2584B5 /* Pods_LXCShow_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LXCShow_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3D614BBBC9E5A61BCAC6A37 /* Pods-LXCShow_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LXCShow_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LXCShow_Example/Pods-LXCShow_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DAFA45F1AE4CCFD5345DAA0A /* Pods_LXCShow_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LXCShow_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EECB29E40FEA78FF23AE1131 /* LXCShow.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = LXCShow.podspec; path = ../LXCShow.podspec; sourceTree = "<group>"; };
+		EECB29E40FEA78FF23AE1131 /* LXCShow.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LXCShow.podspec; path = ../LXCShow.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FAFCF9FE2C325A44F8F62A9D /* Pods-LXCShow_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LXCShow_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-LXCShow_Example/Pods-LXCShow_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -247,6 +247,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = butterflyXX;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = LWJ6MASW42;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -302,10 +305,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LXCShow_Example/Pods-LXCShow_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/LXCShow/LXCShow.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LXCShow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -485,6 +490,7 @@
 			baseConfigurationReference = D3D614BBBC9E5A61BCAC6A37 /* Pods-LXCShow_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LWJ6MASW42;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LXCShow/LXCShow-Prefix.pch";
 				INFOPLIST_FILE = "LXCShow/LXCShow-Info.plist";
@@ -500,6 +506,7 @@
 			baseConfigurationReference = FAFCF9FE2C325A44F8F62A9D /* Pods-LXCShow_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = LWJ6MASW42;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LXCShow/LXCShow-Prefix.pch";
 				INFOPLIST_FILE = "LXCShow/LXCShow-Info.plist";
