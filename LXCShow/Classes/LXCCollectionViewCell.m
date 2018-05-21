@@ -49,9 +49,10 @@
         [player mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.offset(0);
         }];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            player.urlString = self.cellModel.VideoUrlString;
-        });
+        player.urlString = self.cellModel.VideoUrlString;
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            
+//        });
         
     }
 }

@@ -1,5 +1,5 @@
 PODS:
-  - LXCShow (1.0.1):
+  - LXCShow (1.0.2):
     - Masonry (~> 1.1.0)
     - SDWebImage (~> 4.3.3)
   - Masonry (1.1.0)
@@ -20,7 +20,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  LXCShow: ec17f8a4ae4676701428e9a32503a78a51133576
+  LXCShow: c23626141954ebd2366a20f5172028ca7e4d3ed7
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
 

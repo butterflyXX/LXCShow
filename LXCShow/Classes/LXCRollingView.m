@@ -17,6 +17,7 @@
 @interface LXCRollingView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong)LXCCollectionView *collctionView;
 @property (nonatomic,strong)LXCPlayerView *playerView;
+@property (nonatomic,strong)NSTimer *timer;
 @end
 
 @implementation LXCRollingView
@@ -54,13 +55,8 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         LXCCollectionViewCell *cell = (LXCCollectionViewCell *)[self.collctionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
         [cell addPlayer:self.playerView];
-        NSTimer *timer = [NSTimer timerWithTimeInterval:dataArray[0].timeCount repeats:NO block:^(NSTimer * _Nonnull timer) {
-            [timer invalidate];
-            NSLog(@"%@",[NSThread currentThread]);
-            CGFloat currentOffSetX = self.collctionView.contentOffset.x/self.bounds.size.width;
-            [self.collctionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:currentOffSetX + 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
-        }];
-        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        self.timer = [NSTimer timerWithTimeInterval:dataArray[0].timeCount target:self selector:@selector(timeAction) userInfo:nil repeats:NO];
+        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
     });
     
 }
@@ -94,16 +90,16 @@
         LXCCollectionViewCell *currentCell = (LXCCollectionViewCell *)[self.collctionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
         [self.playerView destroyPlayer];
         [currentCell addPlayer:self.playerView];
-        NSTimer *timer = [NSTimer timerWithTimeInterval:self.dataArray[index % self.dataArray.count].timeCount repeats:NO block:^(NSTimer * _Nonnull timer) {
-            [timer invalidate];
-            NSLog(@"%@",[NSThread currentThread]);
-            CGFloat currentOffSetX = self.collctionView.contentOffset.x/self.bounds.size.width;
-            [self.collctionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:currentOffSetX + 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
-        }];
-        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        self.timer = [NSTimer timerWithTimeInterval:self.dataArray[index % self.dataArray.count].timeCount target:self selector:@selector(timeAction) userInfo:nil repeats:NO];
+        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
     });
-    
-    
+
+}
+
+-(void)timeAction {
+    [self.timer invalidate];
+    CGFloat currentOffSetX = self.collctionView.contentOffset.x/self.bounds.size.width;
+    [self.collctionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:currentOffSetX + 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
 }
 
 @end
