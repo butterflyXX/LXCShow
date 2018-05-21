@@ -56,10 +56,9 @@
         [cell addPlayer:self.playerView];
         NSTimer *timer = [NSTimer timerWithTimeInterval:dataArray[0].timeCount repeats:NO block:^(NSTimer * _Nonnull timer) {
             [timer invalidate];
-            timer = nil;
+            NSLog(@"%@",[NSThread currentThread]);
             CGFloat currentOffSetX = self.collctionView.contentOffset.x/self.bounds.size.width;
             [self.collctionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:currentOffSetX + 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
-//            [self.collctionView layoutIfNeeded];
         }];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     });
@@ -97,10 +96,9 @@
         [currentCell addPlayer:self.playerView];
         NSTimer *timer = [NSTimer timerWithTimeInterval:self.dataArray[index % self.dataArray.count].timeCount repeats:NO block:^(NSTimer * _Nonnull timer) {
             [timer invalidate];
-            timer = nil;
+            NSLog(@"%@",[NSThread currentThread]);
             CGFloat currentOffSetX = self.collctionView.contentOffset.x/self.bounds.size.width;
             [self.collctionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:currentOffSetX + 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
-//            [self.collctionView layoutIfNeeded];
         }];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     });

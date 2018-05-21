@@ -8,6 +8,7 @@
 
 #import "LXCCollectionViewCell.h"
 #import <Masonry/Masonry.h>
+#import "UIImageView+WebCache.h"
 
 
 @interface LXCCollectionViewCell ()
@@ -39,9 +40,7 @@
 -(void)setCellModel:(LXCRollingModel *)cellModel {
     _cellModel = cellModel;
     NSURL *url = [NSURL URLWithString:cellModel.imageUrlString];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    UIImage *image = [UIImage imageWithData:data];
-    self.imageView.image = image;
+    [self.imageView sd_setImageWithURL:url];
 }
 
 -(void)addPlayer:(LXCPlayerView *)player {

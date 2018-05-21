@@ -1,7 +1,11 @@
 PODS:
-  - LXCShow (0.1.0):
+  - LXCShow (1.0.1):
     - Masonry (~> 1.1.0)
+    - SDWebImage (~> 4.3.3)
   - Masonry (1.1.0)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
 
 DEPENDENCIES:
   - LXCShow (from `../`)
@@ -9,14 +13,16 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Masonry
+    - SDWebImage
 
 EXTERNAL SOURCES:
   LXCShow:
     :path: "../"
 
 SPEC CHECKSUMS:
-  LXCShow: 5254eaa25759a26875c6e818aa9bb6c3150a72a3
+  LXCShow: ec17f8a4ae4676701428e9a32503a78a51133576
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
 
 PODFILE CHECKSUM: 5cc935db129680f132bfb723248fca74f7a75ffa
 

@@ -151,8 +151,9 @@
             
         default:
             str = [NSString stringWithFormat:@"%@", @"(_errorCode)"];
-            break;
+            break; 
     }
+    NSLog(@"%@",str);
     
 }
 

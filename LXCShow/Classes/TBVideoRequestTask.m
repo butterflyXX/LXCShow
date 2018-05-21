@@ -149,20 +149,22 @@
     if (self.taskArr.count < 2) {
         _isFinishLoad = YES;
         
-        //这里自己写需要保存数据的路径 -- 存放到了cache里面
-        NSString *cache = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
-        NSString *dataurl = [self.url.description substringFromIndex:@"streaming".length];
-        NSString *httpUrlString = [NSString stringWithFormat:@"http%@",dataurl];
-        NSString *fainalUrlString = [httpUrlString lastPathComponent];
-        NSString *movePath =  [cache stringByAppendingPathComponent:fainalUrlString];
-
-        BOOL isSuccess = [[NSFileManager defaultManager] copyItemAtPath:_tempPath toPath:movePath error:nil];
-        if (isSuccess) {
-            NSLog(@"rename success");
-        }else{
-            NSLog(@"rename fail");
-        }
-        NSLog(@"----%@", movePath);
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            //这里自己写需要保存数据的路径 -- 存放到了cache里面
+            NSString *cache = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
+            NSString *dataurl = [self.url.description substringFromIndex:@"streaming".length];
+            NSString *httpUrlString = [NSString stringWithFormat:@"http%@",dataurl];
+            NSString *fainalUrlString = [httpUrlString lastPathComponent];
+            NSString *movePath =  [cache stringByAppendingPathComponent:fainalUrlString];
+            
+            BOOL isSuccess = [[NSFileManager defaultManager] copyItemAtPath:self.tempPath toPath:movePath error:nil];
+            if (isSuccess) {
+                NSLog(@"rename success");
+            }else{
+                NSLog(@"rename fail");
+            }
+            NSLog(@"----%@", movePath);
+        });
     }
     
     if ([self.delegate respondsToSelector:@selector(didFinishLoadingWithTask:)]) {
