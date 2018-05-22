@@ -9,9 +9,8 @@
 #import "LXCPlayerView.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import "TBloaderURLConnection.h"
 
-@interface LXCPlayerView ()<TBloaderURLConnectionDelegate>
+@interface LXCPlayerView ()
 @property (nonatomic,strong)NSURL *url;
 /**播放器*/
 @property (nonatomic, strong)AVPlayer *player;
@@ -19,8 +18,6 @@
 @property (nonatomic, strong)AVPlayerLayer *playerLayer;
 /**播放器item*/
 @property (nonatomic, strong)AVPlayerItem *playerItem;
-
-@property (nonatomic, strong)TBloaderURLConnection *resouerLoader;
 
 @property (nonatomic,strong)AVURLAsset *videoURLAsset;
 
@@ -83,12 +80,19 @@
     } else {
         NSLog(@"网络播放");
         self.url = [NSURL URLWithString:urlString];
-        self.resouerLoader = [[TBloaderURLConnection alloc] init];
-        self.resouerLoader.delegate = self;
-        NSURL *playUrl = [_resouerLoader getSchemeVideoURL:self.url];
-        self.videoURLAsset = [AVURLAsset URLAssetWithURL:playUrl options:nil];
-        [_videoURLAsset.resourceLoader setDelegate:_resouerLoader queue:dispatch_get_main_queue()];
-        self.playerItem = [AVPlayerItem playerItemWithAsset:_videoURLAsset];
+        NSString *urlCompment = self.url.lastPathComponent;
+        NSURLSessionDownloadTask * task = [[NSURLSession sharedSession] downloadTaskWithURL:self.url completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"%@",error);
+            }
+            NSLog(@"下载完成");
+            NSString *cache = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
+            NSString *filePath = [NSString stringWithFormat:@"%@/%@",cache,urlCompment];
+            
+            [[NSFileManager defaultManager] copyItemAtURL:location toURL:[NSURL fileURLWithPath:filePath] error:NULL];
+        }];
+        [task resume];
+        self.playerItem = [AVPlayerItem playerItemWithURL:self.url];
     }
     
     if (!self.player) {
@@ -116,45 +120,6 @@
 #pragma mark - 暂停播放
 - (void)pausePlay{
     [self.player pause];
-}
-
-#pragma mark - TBloaderURLConnectionDelegate
-
-- (void)didFinishLoadingWithTask:(TBVideoRequestTask *)task
-{
-//    _isFinishLoad = task.isFinishLoad;
-    NSLog(@"下载完成");
-}
-
-//网络中断：-1005
-//无网络连接：-1009
-//请求超时：-1001
-//服务器内部错误：-1004
-//找不到服务器：-1003
-- (void)didFailLoadingWithTask:(TBVideoRequestTask *)task WithError:(NSInteger)errorCode
-{
-    NSString *str = nil;
-    switch (errorCode) {
-        case -1001:
-            str = @"请求超时";
-            break;
-        case -1003:
-        case -1004:
-            str = @"服务器错误";
-            break;
-        case -1005:
-            str = @"网络中断";
-            break;
-        case -1009:
-            str = @"无网络连接";
-            break;
-            
-        default:
-            str = [NSString stringWithFormat:@"%@", @"(_errorCode)"];
-            break; 
-    }
-    NSLog(@"%@",str);
-    
 }
 
 #pragma mark - 销毁播放器

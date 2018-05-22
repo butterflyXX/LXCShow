@@ -43,7 +43,7 @@
     }];
     LXCRollingModel *model1 = [LXCRollingModel new];
     model1.imageUrlString = @"http://wimg.spriteapp.cn/picture/2016/0317/56ea981c857df__82.jpg";
-    model1.VideoUrlString = @"http://wvideo.spriteapp.cn/video/2016/0317/56ea981c857df_wpd.mp4";
+    model1.VideoUrlString = @"https://pic.ibaotu.com/00/18/26/36i888piChPM.mp4";
     model1.timeCount = 10;
     LXCRollingModel *model2 = [LXCRollingModel new];
     model2.imageUrlString = @"http://wimg.spriteapp.cn/picture/2016/0616/57620c1f354ae_31.jpg";

@@ -17,8 +17,6 @@
 #import "LXCPlayerView.h"
 #import "LXCRollingModel.h"
 #import "LXCRollingView.h"
-#import "TBloaderURLConnection.h"
-#import "TBVideoRequestTask.h"
 
 FOUNDATION_EXPORT double LXCShowVersionNumber;
 FOUNDATION_EXPORT const unsigned char LXCShowVersionString[];
